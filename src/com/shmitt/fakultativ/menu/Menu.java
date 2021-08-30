@@ -1,5 +1,8 @@
 package com.shmitt.fakultativ.menu;
 
+import com.shmitt.fakultativ.GetData;
+
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menu {
@@ -15,15 +18,16 @@ public class Menu {
         System.out.println("3. Выход из приложения;");
     }
 
-    public void start() {
+    public void start() throws SQLException {
         if (this.scanner != null) {
             int key;
             do {
                 printMenu();
                 System.out.print("Введите номер меню: ");
                 key = this.scanner.nextInt();
+                GetData getData = new GetData();
                 switch (key) {
-                    case 1 -> System.out.println(System.lineSeparator() + "Вывел все курсы" + System.lineSeparator());
+                    case 1 -> getData.selectAll();
                     case 2 -> System.out.println(System.lineSeparator() + "Вывел курсы по продолжительности"
                             + System.lineSeparator());
                     case 3 -> System.out.println("Завершение программы...");
